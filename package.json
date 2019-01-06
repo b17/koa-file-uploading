@@ -1,0 +1,22 @@
+{
+  "name": "koa-file-uploading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --recursive"
+  },
+  "author": "Roman Yakovenko <erelus@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "joi": "^14.3.1",
+    "koa": "^2.6.2",
+    "koa-body": "^4.0.6",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0"
+  }
+}
