@@ -25,7 +25,8 @@ module.exports = {
         let fsPath = './public' + webPath;
 
         await this._ensureDirExists(path.dirname(fsPath));
-        await util.promisify(fs.rename)(file.path, fsPath);
+        await util.promisify(fs.copyFile)(file.path, fsPath);
+        await util.promisify(fs.unlink)(file.path);
         return webPath;
     }
 };
