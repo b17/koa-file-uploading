@@ -20,7 +20,9 @@ module.exports = {
 
         await Joi.validate(file, uploadSchema);
 
-        let token = crypto.randomBytes(8).toString('hex').match(/.{1,2}/g);
+        let token = (await util.promisify(crypto.randomBytes)(8))
+            .toString('hex')
+            .match(/.{1,2}/g);
         let webPath = ['/uploads'].concat(token).concat([file.name]).join('/');
         let fsPath = './public' + webPath;
 
