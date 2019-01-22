@@ -9,6 +9,8 @@
   "author": "Roman Yakovenko <erelus@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "crypto-promise": "^2.1.0",
+    "fs-extra": "^7.0.1",
     "joi": "^14.3.1",
     "koa": "^2.6.2",
     "koa-body": "^4.0.6",
