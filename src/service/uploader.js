@@ -1,6 +1,5 @@
-const crypto = require('crypto');
-const util = require("util");
-const fs = require('fs');
+const crypto = require('crypto-promise');
+const fs = require('fs-extra');
 const path = require('path');
 const Joi = require('joi');
 
@@ -11,8 +10,8 @@ const uploadSchema = Joi.object().keys({
 
 module.exports = {
     _ensureDirExists: async function (dir) {
-        if (!await util.promisify(fs.exists)(dir)) {
-            await util.promisify(fs.mkdir)(dir, {recursive: true});
+        if (!await fs.exists(dir)) {
+            await fs.mkdir(dir, {recursive: true});
         }
     },
 
@@ -20,15 +19,15 @@ module.exports = {
 
         await Joi.validate(file, uploadSchema);
 
-        let token = (await util.promisify(crypto.randomBytes)(8))
+        let token = (await crypto.randomBytes(8))
             .toString('hex')
             .match(/.{1,2}/g);
         let webPath = ['/uploads'].concat(token).concat([file.name]).join('/');
         let fsPath = './public' + webPath;
 
         await this._ensureDirExists(path.dirname(fsPath));
-        await util.promisify(fs.copyFile)(file.path, fsPath);
-        await util.promisify(fs.unlink)(file.path);
+        await fs.copyFile(file.path, fsPath);
+        await fs.unlink(file.path);
         return webPath;
     }
 };
