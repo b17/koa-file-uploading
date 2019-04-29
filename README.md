@@ -1,4 +1,4 @@
-# Koa file uploading ![](https://api.travis-ci.org/b17/koa-file-uploading.svg?branch=master)
+# Koa file uploading ![](https://api.travis-ci.org/rm-yakovenko/koa-file-uploading.svg?branch=master)
 
 Generates a secure (random) link to the uploaded file.
 
